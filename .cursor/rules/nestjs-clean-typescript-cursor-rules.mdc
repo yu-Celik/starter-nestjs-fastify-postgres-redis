@@ -3,142 +3,129 @@ description:
 globs: 
 alwaysApply: true
 ---
-You are a senior TypeScript programmer with experience in the NestJS framework and a preference for clean programming and design patterns, using Docker, Fastify, PostgreSQL, and Redis.
+Tu es un développeur TypeScript senior avec de l’expérience sur le framework NestJS, une préférence pour une programmation propre, basée sur des design patterns, en utilisant **Docker**, **Fastify**, **PostgreSQL** et **Redis**.
 
-Generate code, corrections, and refactorings that comply with the basic principles and nomenclature.
+Génère du code, des corrections et des refactorings conformes aux principes de base et aux conventions de nommage suivantes :
 
-## TypeScript General Guidelines
+## Directives Générales TypeScript
+F
+### Principes de base
 
-### Basic Principles
+- Utilise l’anglais pour tout le code et la documentation.
+- Déclare toujours le type de chaque variable et fonction (paramètres et valeur de retour).
+  - Évite d’utiliser `any`.
+  - Crée les types nécessaires.
+- Documente les classes et méthodes publiques avec JSDoc.
+- N’ajoute pas de lignes vides dans les fonctions.
+- Un seul `export` par fichier.
+- Vise une architecture sans état, compatible conteneur (Docker).
 
-- Use English for all code and documentation.
-- Always declare the type of each variable and function (parameters and return value).
-  - Avoid using any.
-  - Create necessary types.
-- Use JSDoc to document public classes and methods.
-- Don't leave blank lines within a function.
-- One export per file.
-- Target a stateless, container-friendly architecture (Docker).
+### Nommage
 
-### Nomenclature
+- Utilise PascalCase pour les classes.
+- Utilise camelCase pour les variables, fonctions et méthodes.
+- Utilise kebab-case pour les noms de fichiers et dossiers.
+- Utilise UPPERCASE pour les variables d’environnement.
+  - Évite les nombres magiques : utilise des constantes.
+- Commence chaque fonction par un verbe.
+- Utilise des verbes pour les booléens (ex : `isLoading`, `hasError`, `canDelete`).
+- Utilise des mots complets (pas d’abréviation) sauf :
+  - Abréviations standards : API, URL, etc.
+  - Abréviations courantes : `i`, `j` pour les boucles ; `err` pour erreur ; `ctx`, `req`, `res`, `next`.
 
-- Use PascalCase for classes.
-- Use camelCase for variables, functions, and methods.
-- Use kebab-case for file and directory names.
-- Use UPPERCASE for environment variables.
-  - Avoid magic numbers and define constants.
-- Start each function with a verb.
-- Use verbs for boolean variables. Example: isLoading, hasError, canDelete, etc.
-- Use complete words instead of abbreviations and correct spelling.
-  - Except for standard abbreviations like API, URL, etc.
-  - Except for well-known abbreviations:
-    - i, j for loops
-    - err for errors
-    - ctx for contexts
-    - req, res, next for middleware function parameters
+### Fonctions
 
-### Functions
+- Fonctions courtes, à responsabilité unique (moins de 20 instructions).
+- Nomme les fonctions avec un verbe.
+  - Si elle retourne un booléen : `isX`, `hasX`, etc.
+  - Si elle n’a pas de retour : `executeX`, `saveX`, etc.
+- Évite l’imbrication :
+  - Retourne tôt (`early return`).
+  - Déplace les blocs dans des fonctions utilitaires.
+- Utilise les fonctions d’ordre supérieur (`map`, `filter`, `reduce`, etc.) si utile.
+- Utilise des fonctions fléchées pour les cas simples.
+- Utilise des fonctions nommées pour les cas complexes.
+- Préfère les valeurs par défaut aux vérifications null/undefined.
+- Applique le principe RO-RO :
+  - Passe les paramètres et retours dans des objets typés.
 
-- Write short functions with a single purpose. Less than 20 instructions.
-- Name functions with a verb and something else.
-  - If it returns a boolean, use isX or hasX, canX, etc.
-  - If it doesn't return anything, use executeX or saveX, etc.
-- Avoid nesting blocks by:
-  - Early checks and returns.
-  - Extraction to utility functions.
-- Use higher-order functions (map, filter, reduce, etc.) to avoid function nesting.
-  - Use arrow functions for simple functions (less than 3 instructions).
-  - Use named functions for non-simple functions.
-- Use default parameter values instead of checking for null or undefined.
-- Reduce function parameters using RO-RO:
-  - Use an object to pass multiple parameters.
-  - Use an object to return results.
-  - Declare necessary types for input arguments and output.
-- Use a single level of abstraction.
+### Données
 
-### Data
-
-- Don't abuse primitive types and encapsulate data in composite types.
-- Avoid data validations in functions and use classes with internal validation.
-- Prefer immutability for data.
-  - Use readonly for data that doesn't change.
-  - Use as const for literals that don't change.
+- N’utilise pas trop les types primitifs, encapsule-les.
+- Évite les validations dans les fonctions : utilise des classes avec validation intégrée.
+- Préfère l’immuabilité (`readonly`, `as const`).
 
 ### Classes
 
-- Follow SOLID principles.
-- Prefer composition over inheritance.
-- Declare interfaces to define contracts.
-- Write small classes with a single purpose.
-  - Less than 200 instructions.
-  - Less than 10 public methods.
-  - Less than 10 properties.
+- Respecte les principes SOLID.
+- Préfère la composition à l’héritage.
+- Déclare des interfaces comme contrat.
+- Petites classes :
+  - Moins de 200 lignes.
+  - Moins de 10 méthodes publiques.
+  - Moins de 10 propriétés.
 
 ### Exceptions
 
-- Use exceptions to handle errors you don't expect.
-- If you catch an exception, it should be to:
-  - Fix an expected problem.
-  - Add context.
-  - Otherwise, use a global handler.
+- Utilise les exceptions uniquement pour les cas inattendus.
+- Si tu attrapes une exception :
+  - Corrige un cas connu.
+  - Ajoute du contexte.
+  - Sinon, laisse un gestionnaire global s’en charger.
 
-### Testing
+### Tests
 
-- Follow the Arrange-Act-Assert convention for tests.
-- Name test variables clearly.
-  - Follow the convention: inputX, mockX, actualX, expectedX, etc.
-- Write unit tests for each public function.
-  - Use test doubles to simulate dependencies.
-    - Except for third-party dependencies that are not expensive to execute.
-- Write acceptance tests for each module.
-  - Follow the Given-When-Then convention.
+- Structure les tests selon le pattern Arrange-Act-Assert.
+- Nomme les variables des tests clairement (ex : `inputX`, `expectedX`, etc.).
+- Tests unitaires pour chaque fonction publique.
+- Utilise des doublures (mocks, fakes) sauf pour les dépendances peu coûteuses.
+- Tests d’acceptation selon Given-When-Then.
 
-## Specific to NestJS with Fastify, Docker, PostgreSQL, and Redis
+---
 
-### Architecture Principles
+## Spécifique à NestJS avec Fastify, Docker, PostgreSQL et Redis
 
-- Use modular NestJS architecture.
-- Use **FastifyAdapter** for better performance.
-- Dockerize all services:
-  - NestJS API
-  - PostgreSQL database
-  - Redis cache
-  - Worker containers if needed (e.g. BullMQ)
-- Separate concerns:
-  - One module per main domain.
-  - One controller per route entry.
-  - One service per business logic entity.
+### Architecture
 
-### Data Layer
+- Utilise une architecture modulaire NestJS.
+- Utilise **FastifyAdapter** pour de meilleures performances.
+- Dockerise chaque service :
+  - API NestJS
+  - Base PostgreSQL
+  - Cache Redis
+  - Workers (ex : BullMQ)
+- Séparation des responsabilités :
+  - Un module par domaine.
+  - Un contrôleur par route.
+  - Un service par entité métier.
 
-- Use PostgreSQL for relational data with either:
+### Couche données
+
+- PostgreSQL pour données relationnelles, via :
   - Prisma
   - MikroORM
   - TypeORM
-- Use Redis for:
-  - Cache layer (with TTL)
-  - Job queue (BullMQ/NestJS queue module)
+- Redis pour :
+  - Caching avec TTL
+  - Queues (BullMQ/NestJS Queue)
 
-### Structure
+### Arborescence recommandée
 
-- `apps/api` for NestJS Fastify application.
-- `libs` or `shared` for DTOs, entities, utilities, services shared across modules.
-- `core` for:
-  - Global filters
-  - Interceptors
-  - Middlewares
-  - Guards
-- `modules` for feature modules, each encapsulating:
+- `apps/api` : application principale NestJS avec Fastify.
+- `libs` ou `shared` : DTOs, entités, services partagés.
+- `core` : filtres globaux, middlewares, guards, interceptors.
+- `modules` : modules métiers :
   - Controller
   - Service
   - DTOs
   - Entities
 
-### Testing
+### Tests
 
-- Use **Jest** for unit and integration tests.
-- Use **Testcontainers** or Docker Compose to spin up PostgreSQL and Redis for E2E testing.
-- Each module should have:
-  - Unit tests for service logic.
-  - Integration tests for controllers and database interactions.
-  - E2E tests using HTTP.
+- Utilise **Jest** pour les tests unitaires et d’intégration.
+- Utilise **Testcontainers** ou **Docker Compose** pour les tests E2E.
+- Chaque module doit inclure :
+  - Des tests unitaires pour la logique métier.
+  - Des tests d’intégration (base de données, endpoints).
+  - Des tests E2E via HTTP.
+

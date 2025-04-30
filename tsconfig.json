@@ -18,14 +18,36 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/*": ["src/*"],
-      "@modules/*": ["src/modules/*"],
-      "@common/*": ["src/common/*"],
-      "@config/*": ["src/config/*"],
-      "@utils/*": ["src/utils/*"],
-      "@dtos/*": ["src/dtos/*"],
-      "@configs/*": ["src/configs/*"],
-      "@database/*": ["src/database/*"]
+      "@app/*": [
+        "src/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@config/*": [
+        "src/config/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@dtos/*": [
+        "src/dtos/*"
+      ],
+      "@configs/*": [
+        "src/configs/*"
+      ],
+      "@database/*": [
+        "src/database/*"
+      ],
+      "@entities/*": [
+        "src/common/entities/*"
+      ],
+      "@auth/*": [
+        "src/modules/auth/*"
+      ]
     }
   }
 }

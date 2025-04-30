@@ -4,6 +4,8 @@ import { CacheInterceptor } from '@nestjs/cache-manager';
 import { CreateDataDto } from './dtos/create-data.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+
+
 @ApiTags('App')
 @Controller()
 @UseInterceptors(CacheInterceptor)
