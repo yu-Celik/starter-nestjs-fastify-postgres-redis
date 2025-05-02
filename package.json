@@ -1,5 +1,5 @@
 {
-  "name": "starter-api-nestjs-redis-postgres",
+  "name": "starter-nestjs-fastify-postgres-redis",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -39,7 +39,6 @@
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.0",
     "@nestjs/passport": "^11.0.5",
-    "@nestjs/platform-express": "^11.1.0",
     "@nestjs/platform-fastify": "^11.1.0",
     "@nestjs/swagger": "^11.1.6",
     "@nestjs/typeorm": "^11.0.0",
@@ -63,7 +62,6 @@
     "@nestjs/testing": "^11.1.0",
     "@swc/cli": "^0.7.3",
     "@swc/core": "^1.11.24",
-    "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",
     "@types/passport-local": "^1.0.38",

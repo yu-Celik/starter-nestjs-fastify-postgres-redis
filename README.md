@@ -23,9 +23,9 @@
 
 ## Description
 
-# Starter API NestJS Redis PostgreSQL
+# Starter NestJS Fastify PostgreSQL Redis
 
-Un projet de démarrage complet pour une API NestJS utilisant Redis pour le cache et PostgreSQL comme base de données.
+Un projet de démarrage complet pour une API NestJS utilisant Fastify comme moteur HTTP, Redis pour le cache et PostgreSQL comme base de données.
 
 ## Fonctionnalités
 
