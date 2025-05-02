@@ -43,6 +43,35 @@ Un projet de démarrage complet pour une API NestJS utilisant Redis pour le cach
 $ pnpm install
 ```
 
+## Configuration des variables d'environnement
+
+Créez un fichier `.env` à la racine du projet avec les variables suivantes :
+
+```
+# Environnement
+NODE_ENV=development
+
+# Serveur
+PORT=3000
+HOST=0.0.0.0
+
+# Base de données PostgreSQL
+DATABASE_HOST=postgres
+DATABASE_PORT=5432
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_NAME=nestjs_db
+
+# Redis
+REDIS_HOST=redis
+REDIS_PORT=6379
+
+# Logging
+LOG_LEVEL=info
+```
+
+Ces variables sont utilisées par l'application et Docker Compose pour configurer les services.
+
 ## Compile and run the project
 
 ```bash
