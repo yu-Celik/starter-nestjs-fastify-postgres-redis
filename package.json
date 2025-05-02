@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "starter-api-nestjs-redis-postgres",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -43,7 +43,7 @@
     "@nestjs/platform-fastify": "^11.1.0",
     "@nestjs/swagger": "^11.1.6",
     "@nestjs/typeorm": "^11.0.0",
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "cache-manager": "^6.4.2",
     "cache-manager-redis-store": "^3.0.1",
     "class-transformer": "^0.5.1",
@@ -63,7 +63,6 @@
     "@nestjs/testing": "^11.1.0",
     "@swc/cli": "^0.7.3",
     "@swc/core": "^1.11.24",
-    "@types/bcrypt": "^5.0.2",
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",

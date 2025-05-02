@@ -23,7 +23,19 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Starter API NestJS Redis PostgreSQL
+
+Un projet de démarrage complet pour une API NestJS utilisant Redis pour le cache et PostgreSQL comme base de données.
+
+## Fonctionnalités
+
+- Architecture NestJS modulaire et propre
+- Utilisation de Fastify comme moteur HTTP
+- PostgreSQL comme base de données relationnelle (via TypeORM)
+- Redis pour le cache et les files d'attente
+- Docker pour le développement et la production
+- Container Docker Alpine pour des images légères
+- Configuration complète pour le développement, les tests et la production
 
 ## Project setup
 

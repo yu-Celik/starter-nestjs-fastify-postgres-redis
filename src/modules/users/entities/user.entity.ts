@@ -1,7 +1,7 @@
 import { Entity, Column, BeforeInsert, Index } from 'typeorm';
 import { BaseEntity } from '@entities/base.entity';
 import { Exclude } from 'class-transformer';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs';
 import { UserRole } from '@modules/users/enums/user-role.enum';
 
 @Entity('users')
